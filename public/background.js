@@ -11,9 +11,10 @@ chrome.commands.onCommand.addListener(async (command) => {
       ? { type: "nudgeSpeed", value: STEP }
       : command === "speed-down"
         ? { type: "nudgeSpeed", value: -STEP }
-        : { type: "setSpeed", value: 1 };
+        : { type: "resetSpeed" };
 
   try {
+    // Vai para todos os frames; cada content script decide se tem um video alvo.
     await chrome.tabs.sendMessage(tab.id, message);
   } catch (_) {
     // Sem content script na aba (chrome://, web store, etc.)

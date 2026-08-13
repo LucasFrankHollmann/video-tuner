@@ -1,4 +1,7 @@
-:root {
+/* Tema e controles compartilhados entre o popup e o overlay da pagina.
+   `:host` cobre o uso dentro do shadow root do overlay, onde `:root` nao casa. */
+:root,
+:host {
   --bg: #16161a;
   --panel: #1e1e24;
   --text: #f2f2f5;
@@ -9,33 +12,6 @@
 
 * {
   box-sizing: border-box;
-}
-
-body {
-  width: 300px;
-  margin: 0;
-  padding: 14px;
-  background: var(--bg);
-  color: var(--text);
-  font: 14px/1.4 system-ui, -apple-system, Segoe UI, sans-serif;
-}
-
-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 15px;
-  letter-spacing: 0.2px;
-}
-
-.status {
-  font-size: 11px;
-  color: var(--muted);
 }
 
 .control {
@@ -66,6 +42,7 @@ output {
 }
 
 input[type="range"] {
+  display: block;
   width: 100%;
   margin: 0;
   accent-color: var(--accent);
@@ -82,6 +59,7 @@ input[type="range"] {
   flex: 1 1 auto;
   padding: 5px 0;
   min-width: 42px;
+  font-family: inherit;
   font-size: 12px;
   color: var(--text);
   background: #26262e;
@@ -105,36 +83,4 @@ input[type="range"] {
   margin: 8px 0 0;
   font-size: 11px;
   color: var(--muted);
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.check {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 12px;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.ghost {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--muted);
-  padding: 5px 10px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.ghost:hover {
-  color: var(--text);
-  border-color: var(--accent);
 }

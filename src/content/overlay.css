@@ -1,0 +1,115 @@
+.vt-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: var(--text);
+  font: 13px/1.4 system-ui, -apple-system, Segoe UI, sans-serif;
+  opacity: 0.75;
+  transition: opacity 0.12s ease;
+}
+
+/* O painel cresce para longe da borda em que esta ancorado. */
+.vt-panel.vt-top-left,
+.vt-panel.vt-top-right {
+  flex-direction: column;
+}
+
+.vt-panel.vt-bottom-left,
+.vt-panel.vt-bottom-right {
+  flex-direction: column-reverse;
+}
+
+.vt-panel.vt-top-right,
+.vt-panel.vt-bottom-right {
+  align-items: flex-end;
+}
+
+.vt-panel.is-open {
+  opacity: 1;
+}
+
+.vt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(17, 17, 20, 0.88);
+  backdrop-filter: blur(6px);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+}
+
+.vt-mark {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+}
+
+.vt-value {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vt-sep {
+  color: var(--muted);
+}
+
+.vt-body {
+  width: 240px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(22, 22, 26, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Versao compacta dos controles compartilhados com a tela de configuracao. */
+.vt-body .control {
+  padding: 8px 9px 9px;
+  margin-bottom: 8px;
+  background: var(--panel);
+}
+
+.vt-body label {
+  font-size: 10px;
+}
+
+.vt-body output {
+  font-size: 12px;
+}
+
+.vt-body .presets {
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.vt-body .presets button {
+  padding: 3px 0;
+  /* 6 presets de velocidade cabem numa linha so nos 240px do painel. */
+  min-width: 28px;
+  font-size: 11px;
+}
+
+.vt-reset {
+  display: block;
+  width: 100%;
+  padding: 5px 0;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.vt-reset:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}

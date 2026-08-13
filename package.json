@@ -1,0 +1,21 @@
+{
+  "name": "video-tuner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Controle o volume (ate 600%) e a velocidade dos videos de qualquer site.",
+  "type": "module",
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && vite build && vite build --config vite.content.config.js",
+    "dev:popup": "vite build --watch",
+    "dev:content": "vite build --watch --config vite.content.config.js"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.14"
+  }
+}
