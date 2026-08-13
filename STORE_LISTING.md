@@ -1,11 +1,11 @@
 # Publicação na Chrome Web Store
 
-Tudo o que o cadastro pede, já preenchido. O que só você pode fazer está marcado com **[você]**.
+Tudo o que o cadastro pede, já preenchido. Os textos que vão para a loja estão **em inglês**, prontos para colar; as instruções em volta ficam em pt-BR. O que só você pode fazer está marcado com **[você]**.
 
 ## 1. Antes de começar
 
 - **[você]** Conta de desenvolvedor no [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) — taxa **única de US$ 5** por conta (não por extensão).
-- **[você]** GitHub Pages ligado para a política de privacidade: *Settings → Pages → Branch `main`, pasta `/docs`*. A URL fica `https://lucasfrankhollmann.github.io/video-tuner/`. Confirme que abre antes de enviar — a Store valida o link.
+- **[você]** GitHub Pages ligado para a política de privacidade: *Settings → Pages → Branch `main`, pasta `/docs`*. A URL fica `https://lucasfrankhollmann.github.io/video-tuner/`. Confirme que abre antes de enviar — a Store valida o link. A página tem um resumo em inglês no fim, que é o que o revisor vai ler.
 
 ## 2. Gerar o pacote
 
@@ -23,40 +23,42 @@ Sai `video-tuner-<versão>.zip` na raiz, com o `manifest.json` na raiz do zip (�
 
 | Campo | Valor |
 | --- | --- |
-| **Nome** | `Video Tuner` |
-| **Resumo** (máx. 132 caracteres) | `Controle a velocidade (até 8x) e o volume (até 600%) direto sobre o vídeo, em qualquer site.` (95 caracteres) |
-| **Categoria** | Ferramentas *(Tools)* |
-| **Idioma padrão** | Português (Brasil) |
-| **URL do site** | `https://github.com/LucasFrankHollmann/video-tuner` |
-| **URL de suporte** | `https://github.com/LucasFrankHollmann/video-tuner/issues` |
+| **Name** | `Video Tuner` |
+| **Summary** (máx. 132 caracteres) | `Control playback speed (up to 8x) and volume (up to 600%) right on top of the video, on any site.` (97 caracteres) |
+| **Category** | Tools |
+| **Default language** | English (United States) |
+| **Website URL** | `https://github.com/LucasFrankHollmann/video-tuner` |
+| **Support URL** | `https://github.com/LucasFrankHollmann/video-tuner/issues` |
 
-### Descrição detalhada (colar como está)
+O campo *Summary* vem pré-preenchido com a `description` do manifest, que está em pt-BR. Substitua pelo texto em inglês acima.
+
+### Description (colar como está)
 
 ```
-Controle a velocidade e o volume de qualquer vídeo sem sair da página.
+Control the speed and volume of any video without leaving the page.
 
-Passe o mouse sobre um vídeo e um selo discreto aparece no canto. Passe o mouse no selo e ele expande com os controles — sliders e presets, ali mesmo sobre o player.
+Hover a video and a small badge appears in the corner. Hover the badge and it expands into the controls — sliders and presets, right on top of the player.
 
-RECURSOS
+FEATURES
 
-• Velocidade de 0,25x a 8x, com presets de 0,5x, 1x, 1,5x, 2x, 4x e 8x.
-• Volume de 0% a 600%. Acima de 100% o áudio é amplificado pela Web Audio API, útil para vídeos gravados baixo.
-• Ajuste por vídeo: o que você muda vale só para aquele vídeo. Os outros da página seguem o padrão do site.
-• Um vídeo que você nunca ajustou não é tocado — o volume que o próprio site definiu continua valendo.
-• Botão "voltar ao padrão" que restaura exatamente os valores de antes do seu ajuste.
-• Funciona em qualquer site, inclusive players customizados que usam Shadow DOM, e em tela cheia.
-• Funciona em sites de página única (YouTube, Netflix e afins): vídeos novos são detectados automaticamente.
-• Atalhos de teclado: Ctrl+Shift+. para acelerar, Ctrl+Shift+, para desacelerar, Ctrl+Shift+0 para voltar a 1x.
+• Playback speed from 0.25x to 8x, with presets at 0.5x, 1x, 1.5x, 2x, 4x and 8x.
+• Volume from 0% to 600%. Above 100% the audio is amplified through the Web Audio API — handy for quietly recorded videos.
+• Per-video settings: what you change applies only to that video. Every other video on the page keeps the site's own behavior.
+• A video you never adjusted is left untouched — the volume the site set stays exactly as it was.
+• A "back to default" button that restores the precise values from before your adjustment.
+• Works on any site, including custom players built with Shadow DOM, and in fullscreen.
+• Works on single-page apps (YouTube, Netflix and the like): new videos are picked up automatically.
+• Keyboard shortcuts: Ctrl+Shift+. to speed up, Ctrl+Shift+, to slow down, Ctrl+Shift+0 to return to 1x.
 
-CONFIGURAÇÃO
+SETTINGS
 
-O ícone da extensão abre uma tela onde você escolhe quais controles aparecem no overlay (velocidade, volume ou os dois) e em qual canto do vídeo ele fica.
+The extension icon opens a settings screen where you choose which controls the overlay shows (speed, volume, or both) and which corner of the video it sits in.
 
-PRIVACIDADE
+PRIVACY
 
-Nenhum dado é coletado, transmitido ou vendido. A extensão não faz requisição de rede nenhuma, não tem analytics nem rastreadores. A única coisa gravada é a sua preferência de exibição, no armazenamento local do próprio navegador.
+No data is collected, transmitted, or sold. The extension makes no network requests and contains no analytics or trackers. The only thing stored is your display preference, in the browser's own local storage.
 
-Código aberto (MIT): https://github.com/LucasFrankHollmann/video-tuner
+Open source (MIT): https://github.com/LucasFrankHollmann/video-tuner
 ```
 
 ## 4. Imagens
@@ -76,46 +78,50 @@ Código aberto (MIT): https://github.com/LucasFrankHollmann/video-tuner
 
 Enquadre em 1280×800. Prefira um vídeo sem conteúdo de terceiros identificável na tela.
 
+> A interface da extensão está em pt-BR. Como a ficha está em inglês, vale considerar traduzir a UI antes de gerar as capturas — ou aceitar que as imagens mostrem rótulos em português.
+
 ## 5. Práticas de privacidade
 
-**Finalidade única** (campo *Single purpose*):
+**Single purpose:**
 
 ```
-Ajustar a velocidade de reprodução e o volume dos vídeos da página em que o usuário está, por meio de um controle sobreposto ao próprio vídeo.
+Adjust the playback speed and volume of videos on the page the user is viewing, through a control overlaid on the video itself.
 ```
 
 **Justificativa de cada permissão:**
 
 | Permissão | Justificativa (colar) |
 | --- | --- |
-| `storage` | `Guarda apenas a preferência de exibição do usuário: quais controles aparecem no overlay e em qual canto do vídeo. Nada além disso é gravado, e nada é enviado para fora do dispositivo.` |
-| `activeTab` | `Os atalhos de teclado precisam identificar a aba ativa para aplicar a mudança de velocidade ao vídeo que o usuário está assistindo naquele momento.` |
-| Acesso a todos os sites (`host_permissions` / content script em `<all_urls>`) | `Vídeos existem em qualquer site, e a função da extensão é justamente controlar o vídeo onde ele estiver. O acesso é usado apenas para inserir o script que localiza elementos de vídeo e altera as propriedades playbackRate e volume, e para desenhar o controle sobreposto. A extensão não lê o conteúdo das páginas, não acessa cookies, histórico ou formulários, e não envia nada para servidor nenhum — não faz requisição de rede.` |
+| `storage` | `Stores only the user's display preference: which controls the overlay shows and which corner of the video it sits in. Nothing else is stored, and nothing leaves the device.` |
+| `activeTab` | `The keyboard shortcuts need to identify the active tab in order to apply the speed change to the video the user is currently watching.` |
+| Acesso a todos os sites (`host_permissions` / content script em `<all_urls>`) | `Videos exist on any website, and the extension's entire purpose is to control the video wherever it happens to be. The access is used only to inject the script that locates video elements and changes their playbackRate and volume properties, and to draw the overlaid control. The extension does not read page content, does not access cookies, history or form data, and sends nothing to any server — it makes no network requests at all.` |
 
-**Uso de código remoto:** *Não, não uso código remoto.* Todo o JavaScript vai dentro do pacote; a extensão não carrega script externo nem usa `eval`.
+**Are you using remote code?** *No, I am not using remote code.* Todo o JavaScript vai dentro do pacote; a extensão não carrega script externo nem usa `eval`.
 
-**Coleta de dados:** não marcar nenhuma categoria. Depois marque as três declarações:
+**Data collection:** não marcar nenhuma categoria. Depois marque as três declarações:
 
-- não vendo nem transfiro dados a terceiros fora dos casos aprovados;
-- não uso nem transfiro dados para finalidade alheia à função principal da extensão;
-- não uso nem transfiro dados para avaliar crédito ou conceder empréstimos.
+- I do not sell or transfer user data to third parties, outside of the approved use cases;
+- I do not use or transfer user data for purposes that are unrelated to my item's single purpose;
+- I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
-**URL da política de privacidade:** `https://lucasfrankhollmann.github.io/video-tuner/`
+**Privacy policy URL:** `https://lucasfrankhollmann.github.io/video-tuner/`
 
 ## 6. Distribuição
 
-- Visibilidade: **Pública**.
-- Regiões: todas (ou só Brasil, se preferir começar pequeno — a ficha está em pt-BR).
+- Visibility: **Public**.
+- Regiões: todas.
 - Não contém anúncios; não é destinada a crianças.
 
-## 7. Notas para o revisor (campo opcional, ajuda)
+## 7. Notes for the reviewer (campo opcional, ajuda)
 
 ```
-Extensão de código aberto: https://github.com/LucasFrankHollmann/video-tuner
+Open source: https://github.com/LucasFrankHollmann/video-tuner
 
-Como testar: abra qualquer site com vídeo (por exemplo youtube.com) e passe o mouse sobre o vídeo. Um selo aparece no canto inferior esquerdo; passe o mouse nele e o painel expande com os controles de velocidade e volume. O ícone da extensão abre a tela de configuração.
+How to test: open any site with a video (youtube.com, for example) and hover the video. A badge appears in the corner; hover it and the panel expands with the speed and volume controls. The extension icon opens the settings screen.
 
-O acesso amplo a sites é necessário porque a extensão precisa localizar o elemento de vídeo em qualquer página. Ela apenas lê e altera playbackRate e volume desses elementos e desenha o overlay em Shadow DOM. Não há requisição de rede, código remoto, analytics ou coleta de dados.
+Broad site access is required because the extension has to locate the video element on any page. It only reads and writes playbackRate and volume on those elements and draws its overlay inside a Shadow DOM. There are no network requests, no remote code, no analytics, and no data collection.
+
+Note: the extension's user interface is in Brazilian Portuguese.
 ```
 
 ## 8. Depois de enviar
