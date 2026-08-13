@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de Privacidade — Video Tuner</title>
+    <meta
+      name="description"
+      content="O Video Tuner não coleta, não transmite e não vende nenhum dado. Toda a configuração fica no seu dispositivo."
+    />
+    <style>
+      :root {
+        --bg: #16161a;
+        --panel: #1e1e24;
+        --text: #f2f2f5;
+        --muted: #9a9aa6;
+        --accent: #6c8cff;
+        --border: #2c2c35;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 40px 20px 72px;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.65 system-ui, -apple-system, Segoe UI, sans-serif;
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 26px;
+        letter-spacing: 0.2px;
+      }
+
+      h2 {
+        margin: 36px 0 10px;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--muted);
+      }
+
+      .meta {
+        margin: 0 0 28px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .lead {
+        padding: 14px 16px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+      }
+
+      p {
+        margin: 12px 0;
+      }
+
+      ul {
+        margin: 12px 0;
+        padding-left: 20px;
+      }
+
+      li {
+        margin: 6px 0;
+      }
+
+      /* Tabelas rolam na propria caixa: nada de scroll horizontal na pagina. */
+      .table-wrap {
+        overflow-x: auto;
+        margin: 14px 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--border);
+      }
+
+      th {
+        background: var(--panel);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      code {
+        padding: 1px 5px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        font-size: 0.88em;
+      }
+
+      strong {
+        color: #fff;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      hr {
+        margin: 44px 0 0;
+        border: none;
+        border-top: 1px solid var(--border);
+      }
+
+      footer {
+        margin-top: 44px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .en {
+        color: var(--muted);
+      }
+
+      .en strong {
+        color: var(--text);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Política de Privacidade</h1>
+      <p class="meta">
+        Video Tuner — extensão Chrome (Manifest V3) · Vigente desde 13 de agosto de 2026
+      </p>
+
+      <p class="lead">
+        O Video Tuner <strong>não coleta, não transmite e não vende nenhum dado</strong>. A extensão
+        não faz requisições de rede, não tem analytics, telemetria, rastreadores nem servidores. Tudo
+        acontece localmente, no seu navegador.
+      </p>
+
+      <h2>O que é armazenado</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Dado</th>
+              <th>Onde</th>
+              <th>Quando é apagado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Sua configuração: quais controles aparecem no overlay (velocidade/volume) e em qual
+                canto do vídeo
+              </td>
+              <td><code>chrome.storage.local</code>, no seu dispositivo</td>
+              <td>Ao remover a extensão, ou ao limpar os dados dela</td>
+            </tr>
+            <tr>
+              <td>Velocidade e volume ajustados em um vídeo específico</td>
+              <td>Apenas na memória da aba</td>
+              <td>Ao recarregar ou fechar a página</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Nada disso sai do seu computador. A extensão não usa <code>chrome.storage.sync</code>,
+        portanto a configuração também não é enviada para a sua conta Google.
+      </p>
+
+      <h2>O que a extensão acessa nas páginas</h2>
+      <p>
+        Para funcionar, a extensão insere um script nas páginas que você visita. Esse script:
+      </p>
+      <ul>
+        <li>localiza elementos <code>&lt;video&gt;</code> e <code>&lt;audio&gt;</code> da página, inclusive dentro de Shadow DOM;</li>
+        <li>lê e altera <strong>apenas</strong> as propriedades <code>playbackRate</code> e <code>volume</code> desses elementos;</li>
+        <li>amplifica o áudio acima de 100% usando a Web Audio API (<code>GainNode</code>), inteiramente dentro da própria aba;</li>
+        <li>desenha o overlay de controle sobre o vídeo, isolado num Shadow DOM.</li>
+      </ul>
+      <p>
+        A extensão <strong>não</strong> lê o conteúdo das páginas, o histórico de navegação,
+        cookies, dados de formulários, senhas, e <strong>não</strong> acessa o conteúdo dos vídeos ou
+        do áudio. Nenhuma informação é enviada para lugar algum.
+      </p>
+
+      <h2>Permissões e por que são necessárias</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Permissão</th>
+              <th>Motivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>storage</code></td>
+              <td>Guardar sua configuração (controles exibidos e canto do overlay) localmente.</td>
+            </tr>
+            <tr>
+              <td><code>activeTab</code></td>
+              <td>
+                Ao usar um atalho de teclado, identificar a aba ativa para aplicar a mudança nela.
+              </td>
+            </tr>
+            <tr>
+              <td><code>host_permissions: &lt;all_urls&gt;</code></td>
+              <td>
+                Vídeos existem em qualquer site, e a extensão foi feita para funcionar em qualquer um
+                deles. Esse acesso é usado só para inserir o script de controle descrito acima —
+                nunca para ler ou enviar conteúdo das páginas.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Terceiros</h2>
+      <p>
+        Nenhum. A extensão não integra serviços externos, não carrega código remoto e não compartilha
+        dados com ninguém.
+      </p>
+
+      <h2>Uso de dados conforme a Chrome Web Store</h2>
+      <p>
+        Declaramos que os dados manipulados pela extensão <strong>não</strong> são vendidos a
+        terceiros, <strong>não</strong> são usados para finalidade alheia à função principal da
+        extensão e <strong>não</strong> são usados para avaliar crédito ou conceder empréstimos.
+      </p>
+
+      <h2>Mudanças nesta política</h2>
+      <p>
+        Se a política mudar, esta página será atualizada com nova data de vigência. O histórico
+        completo de alterações fica público no
+        <a href="https://github.com/LucasFrankHollmann/video-tuner">repositório</a>.
+      </p>
+
+      <h2>Contato</h2>
+      <p>
+        Dúvidas ou pedidos sobre privacidade:
+        <a href="https://github.com/LucasFrankHollmann/video-tuner/issues">abra uma issue no GitHub</a>.
+      </p>
+
+      <hr />
+
+      <section class="en">
+        <h2>Privacy Policy (English summary)</h2>
+        <p><strong>Effective:</strong> August 13, 2026</p>
+        <p>
+          Video Tuner collects, transmits, and sells <strong>no data</strong>. It makes no network
+          requests and contains no analytics or tracking.
+        </p>
+        <p>
+          Stored locally on your device via <code>chrome.storage.local</code>: your preferences only
+          (which controls the overlay shows, and which corner it appears in). Per-video speed and
+          volume adjustments live in page memory and are discarded on reload. Nothing is synced to
+          your Google account.
+        </p>
+        <p>
+          The content script locates <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code> elements
+          and reads/writes only their <code>playbackRate</code> and <code>volume</code>, amplifying
+          audio above 100% locally through the Web Audio API. It does not read page content, browsing
+          history, cookies, or form data, and sends nothing anywhere.
+        </p>
+        <p>
+          Permissions: <code>storage</code> (save preferences), <code>activeTab</code> (apply
+          keyboard shortcuts to the current tab), <code>&lt;all_urls&gt;</code> (videos can be on any
+          site — used solely to inject the control script).
+        </p>
+        <p>
+          No third parties are involved. Data is not sold, is not used for any purpose unrelated to
+          the extension's core function, and is not used for creditworthiness or lending.
+        </p>
+      </section>
+
+      <footer>Video Tuner · MIT · <a href="https://github.com/LucasFrankHollmann/video-tuner">código-fonte</a></footer>
+    </main>
+  </body>
+</html>

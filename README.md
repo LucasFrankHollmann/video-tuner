@@ -95,6 +95,11 @@ Como nada é persistido, recarregar a página zera os ajustes. É o comportament
 
 O boost acima de 100% usa `createMediaElementSource`. Se a mídia for **cross-origin sem cabeçalhos CORS**, o navegador silencia o áudio nesse caminho; nesse caso a extensão detecta a falha e mantém o volume nativo (máximo 100%). Streams via MSE/blob (YouTube, Netflix, Twitch, Vimeo) não são afetados.
 
+## Privacidade
+
+A extensão não coleta, não transmite e não vende dado nenhum: não faz requisições de rede e só guarda a sua configuração em `chrome.storage.local`. Detalhes em [PRIVACY.md](PRIVACY.md), publicado também em
+<https://lucasfrankhollmann.github.io/video-tuner/> (`docs/index.html`, servido pelo GitHub Pages) — é essa a URL para o campo de política de privacidade da Chrome Web Store.
+
 ## Licença
 
 MIT
