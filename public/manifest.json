@@ -2,12 +2,12 @@
   "manifest_version": 3,
   "name": "Video Tuner",
   "version": "1.0.0",
-  "description": "Controle o volume (ate 600%) e a velocidade dos videos de qualquer site.",
+  "description": "Controle a velocidade (até 8x) e o volume (até 600%) direto sobre o vídeo, em qualquer site.",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Video Tuner - configuracao"
+    "default_title": "Video Tuner — configuração"
   },
   "content_scripts": [
     {
