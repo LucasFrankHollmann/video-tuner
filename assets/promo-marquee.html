@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Video Tuner — marquee promo tile</title>
+    <style>
+      /* Sem border-box o width:1400px vira caixa de conteudo e o padding
+         lateral joga a arte para fora do viewport. */
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1400px;
+        height: 560px;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        gap: 70px;
+        padding: 0 90px;
+        background: radial-gradient(circle at 22% 20%, #2b3358 0%, #101014 62%);
+        color: #f2f2f5;
+        font: 17px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
+      }
+
+      .copy {
+        flex: 1;
+        /* Sem isto o texto impoe largura minima e empurra o stage fora da arte. */
+        min-width: 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 26px;
+      }
+
+      .mark {
+        width: 78px;
+        height: 78px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 52px;
+        letter-spacing: -1px;
+      }
+
+      p {
+        margin: 0;
+        max-width: 520px;
+        font-size: 21px;
+        color: #b3bad2;
+      }
+
+      .chips {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .chips span {
+        padding: 7px 15px;
+        border: 1px solid #343b58;
+        border-radius: 999px;
+        background: rgba(108, 140, 255, 0.12);
+        font-size: 15px;
+        font-weight: 600;
+        color: #b8c4ff;
+      }
+
+      /* Miniatura do overlay sobre um quadro de video genérico. */
+      .stage {
+        position: relative;
+        flex: none;
+        width: 560px;
+        height: 316px;
+        border-radius: 14px;
+        overflow: hidden;
+        background: linear-gradient(140deg, #1c2648, #0c0e18);
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6);
+      }
+
+      .stage::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 30% 32%, rgba(96, 120, 220, 0.5), transparent 62%);
+      }
+
+      .panel {
+        position: absolute;
+        left: 18px;
+        bottom: 18px;
+        z-index: 2;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 7px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 11px;
+        border: 1px solid #2c2c35;
+        border-radius: 9px;
+        background: rgba(17, 17, 20, 0.9);
+        font-size: 14px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .pill em {
+        font-style: normal;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: #6c8cff;
+      }
+
+      .pill s {
+        text-decoration: none;
+        color: #9a9aa6;
+      }
+
+      .card {
+        width: 250px;
+        padding: 11px;
+        border: 1px solid #2c2c35;
+        border-radius: 11px;
+        background: rgba(22, 22, 26, 0.97);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+      }
+
+      .control {
+        padding: 9px 10px 10px;
+        border: 1px solid #2c2c35;
+        border-radius: 10px;
+        background: #1e1e24;
+      }
+
+      .control + .control {
+        margin-top: 8px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 7px;
+        font-size: 11px;
+      }
+
+      .row span {
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #9a9aa6;
+      }
+
+      .row b {
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .slider {
+        position: relative;
+        height: 4px;
+        border-radius: 2px;
+        background: #3a3a46;
+      }
+
+      .slider i {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        border-radius: 2px;
+        background: #6c8cff;
+      }
+
+      .slider u {
+        position: absolute;
+        top: -4px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #6c8cff;
+      }
+
+      .presets {
+        display: flex;
+        gap: 4px;
+        margin-top: 9px;
+      }
+
+      .presets span {
+        flex: 1;
+        padding: 3px 0;
+        border: 1px solid #2c2c35;
+        border-radius: 6px;
+        background: #26262e;
+        font-size: 10px;
+        text-align: center;
+        color: #f2f2f5;
+      }
+
+      .presets span.on {
+        background: #6c8cff;
+        border-color: #6c8cff;
+        color: #0d0d12;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="copy">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#7d97ff" />
+              <stop offset="1" stop-color="#3f4bb0" />
+            </linearGradient>
+          </defs>
+          <rect width="128" height="128" rx="29" fill="url(#bg)" />
+          <path
+            d="M 35.72 92.28 A 40 40 0 1 1 92.28 92.28"
+            fill="none"
+            stroke="#fff"
+            stroke-opacity="0.32"
+            stroke-width="9"
+            stroke-linecap="round"
+          />
+          <path
+            d="M 35.72 92.28 A 40 40 0 1 1 92.28 35.72"
+            fill="none"
+            stroke="#fff"
+            stroke-width="9"
+            stroke-linecap="round"
+          />
+          <circle cx="92.28" cy="35.72" r="10.5" fill="#fff" />
+          <circle cx="92.28" cy="35.72" r="4" fill="#4a56b5" />
+          <path
+            d="M 52 45 L 82 64 L 52 83 Z"
+            fill="#fff"
+            stroke="#fff"
+            stroke-width="6"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <h1>Video Tuner</h1>
+      </div>
+
+      <p>Hover any video and tune its speed and volume right where it plays. Per video, nothing to set up.</p>
+
+      <div class="chips">
+        <span>speed up to 8x</span>
+        <span>volume up to 600%</span>
+        <span>any site</span>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="panel">
+        <div class="pill"><em>VT</em>1.50x<s>·</s>200%</div>
+        <div class="card">
+          <div class="control">
+            <div class="row"><span>Velocidade</span><b>1.50x</b></div>
+            <div class="slider"><i style="width: 18%"></i><u style="left: 15%"></u></div>
+            <div class="presets">
+              <span>0.5x</span><span>1x</span><span class="on">1.5x</span><span>2x</span
+              ><span>4x</span><span>8x</span>
+            </div>
+          </div>
+          <div class="control">
+            <div class="row"><span>Volume</span><b>200%</b></div>
+            <div class="slider"><i style="width: 33%"></i><u style="left: 30%"></u></div>
+            <div class="presets">
+              <span>Mudo</span><span>100%</span><span class="on">200%</span><span>400%</span
+              ><span>600%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

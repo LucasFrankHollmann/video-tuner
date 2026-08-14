@@ -63,22 +63,30 @@ Open source (MIT): https://github.com/LucasFrankHollmann/video-tuner
 
 ## 4. Imagens
 
-| Item | Especificação | Situação |
+Tudo pronto em [`store/`](store/), gerado por `scripts/render-assets.ps1`:
+
+| Item | Arquivo | Especificação |
 | --- | --- | --- |
-| Ícone | 128×128 PNG | Pronto: `public/icons/icon128.png` (vai dentro do zip) |
-| Capturas de tela | 1280×800 ou 640×400, PNG ou JPEG, de 1 a 5 | **[você]** — falta gerar |
-| Bloco promocional pequeno | 440×280 PNG | Opcional; sem ele a Store usa o ícone |
-| Bloco promocional grande | 1400×560 PNG | Opcional, só para destaque editorial |
+| Ícone da extensão | `public/icons/icon{16,48,128}.png` | vai dentro do zip |
+| Ícone grande | `store/icon512.png` | 512×512, para a ficha e material avulso |
+| Captura 1 — selo | `store/screenshot-1-badge.png` | 1280×800 |
+| Captura 2 — painel aberto | `store/screenshot-2-panel.png` | 1280×800 |
+| Captura 3 — configuração | `store/screenshot-3-settings.png` | 1280×800 |
+| Bloco promocional pequeno | `store/promo-440x280.png` | 440×280 |
+| Bloco promocional grande | `store/promo-1400x560.png` | 1400×560, só para destaque editorial |
 
-**[você]** As capturas precisam sair do navegador de verdade. Sugestão de 3, cobrindo o que a extensão faz:
+Para regerar depois de mexer na UI:
 
-1. Selo recolhido no canto de um vídeo em reprodução.
-2. Painel expandido, mostrando os sliders de velocidade e volume sobre o vídeo.
-3. A tela de configuração aberta (clique no ícone da extensão).
+```bash
+npm run build
+powershell -ExecutionPolicy Bypass -File scripts/render-assets.ps1
+```
 
-Enquadre em 1280×800. Prefira um vídeo sem conteúdo de terceiros identificável na tela.
+As capturas mostram a **interface real** — o `dist/content.js` e o bundle da tela de configuração rodando num Chrome headless, com a API `chrome.*` trocada por um stub e um vídeo de exemplo neutro. Os valores exibidos (1.50x, 200%) vêm de interação de verdade com os controles, não de texto forjado.
 
-> A interface da extensão está em pt-BR. Como a ficha está em inglês, vale considerar traduzir a UI antes de gerar as capturas — ou aceitar que as imagens mostrem rótulos em português.
+> A interface está em pt-BR e as capturas mostram isso, enquanto a ficha está em inglês. As notas para o revisor (seção 7) avisam disso. Se traduzir a UI algum dia, rode o render de novo.
+>
+> Se preferir capturas de sites reais em vez do vídeo de exemplo, instale a extensão sem compactação e fotografe a tela em 1280×800 — só evite deixar conteúdo de terceiros identificável na imagem.
 
 ## 5. Práticas de privacidade
 

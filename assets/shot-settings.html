@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Video Tuner — settings</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        background: radial-gradient(circle at 50% 0%, #232a44 0%, #101014 65%);
+        color: #f2f2f5;
+        font: 15px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
+      }
+
+      .caption {
+        max-width: 900px;
+        text-align: center;
+        font-size: 27px;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+      }
+
+      .caption b {
+        color: #8ea4ff;
+        font-weight: 600;
+      }
+
+      /* Ampliada com zoom, e nao transform: zoom entra no layout, entao o
+         flex reserva o espaco e a legenda nao e coberta. */
+      .frame {
+        zoom: 1.55;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #16161a;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+      }
+
+      iframe {
+        display: block;
+        width: 290px;
+        height: 406px;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="caption">
+      Choose <b>which controls appear</b> and <b>which corner</b> they sit in
+    </p>
+
+    <div class="frame">
+      <!-- Tela de configuracao real, do bundle publicado. -->
+      <iframe src="popup.html" title="Settings"></iframe>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        document.title = "ready";
+      }, 1200);
+    </script>
+  </body>
+</html>

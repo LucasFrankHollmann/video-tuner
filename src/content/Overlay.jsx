@@ -97,7 +97,7 @@ export default function Overlay({ hostEl }) {
           ) : null}
 
           <button type="button" className="vt-reset" onClick={() => engine.reset(video)}>
-            Voltar ao padrao
+            Voltar ao padrão
           </button>
         </div>
       ) : null}

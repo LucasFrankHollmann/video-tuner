@@ -77,7 +77,10 @@ src/
 public/                     # copiado para dist/ sem transformação
   manifest.json             # MV3: permissões, content script, commands
   background.js             # service worker: atalhos de teclado
-  icons/                    # ícones 16/48/128
+  icons/                    # ícones 16/48/128 (gerados, ver assets/)
+assets/                     # fontes das imagens da loja (ícone, promos, capturas)
+scripts/                    # zip do pacote, render das imagens, servidor do render
+store/                      # imagens geradas para a Chrome Web Store
 dist/                       # build final — é esta pasta que se carrega no Chrome
 ```
 
@@ -97,12 +100,15 @@ O boost acima de 100% usa `createMediaElementSource`. Se a mídia for **cross-or
 
 ## Publicação
 
-Textos, imagens exigidas e justificativas de permissão para a Chrome Web Store estão em [STORE_LISTING.md](STORE_LISTING.md). O pacote de upload sai com:
+Textos, imagens e justificativas de permissão para a Chrome Web Store estão em [STORE_LISTING.md](STORE_LISTING.md).
 
 ```bash
 npm run build
-powershell -ExecutionPolicy Bypass -File scripts/zip.ps1   # gera video-tuner-<versão>.zip
+powershell -ExecutionPolicy Bypass -File scripts/zip.ps1            # video-tuner-<versão>.zip
+powershell -ExecutionPolicy Bypass -File scripts/render-assets.ps1  # imagens em store/
 ```
+
+As imagens de [store/](store/) são geradas, não desenhadas à mão: as fontes ficam em [assets/](assets/) e o render abre o `dist` num Chrome headless. As capturas usam a UI real — o mesmo `content.js` e a mesma tela de configuração que vão para a loja — sobre um vídeo de exemplo, com a API `chrome.*` substituída por um stub.
 
 ## Privacidade
 

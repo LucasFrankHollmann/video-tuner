@@ -9,7 +9,7 @@ export default function App() {
     <div className={loaded ? "" : "loading"}>
       <header>
         <h1>Video Tuner</h1>
-        <span className="status">configuracao</span>
+        <span className="status">configuração</span>
       </header>
 
       <section className="group">
@@ -29,7 +29,7 @@ export default function App() {
           onChange={(showVolume) => update({ showVolume })}
         />
         {!settings.showSpeed && !settings.showVolume ? (
-          <p className="warn">Sem nenhum controle marcado, o overlay nao aparece.</p>
+          <p className="warn">Sem nenhum controle marcado, o overlay não aparece.</p>
         ) : null}
       </section>
 
@@ -39,8 +39,8 @@ export default function App() {
       </section>
 
       <p className="hint">
-        O ajuste vale so para o video em que foi feito — os outros seguem o padrao do site. Passe o
-        mouse sobre um video para ver o overlay e sobre o overlay para expandir.
+        O ajuste vale só para o vídeo em que foi feito — os outros seguem o padrão do site. Passe o
+        mouse sobre um vídeo para ver o overlay e sobre o overlay para expandir.
       </p>
     </div>
   );
