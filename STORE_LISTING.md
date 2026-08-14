@@ -98,10 +98,11 @@ Adjust the playback speed and volume of videos on the page the user is viewing, 
 
 **Justificativa de cada permissão:**
 
+A extensão declara **duas** coisas apenas: `storage` e o acesso a hosts. Não pede `tabs`, `activeTab` nem `scripting` — o dashboard rejeita versões com permissão sobrando.
+
 | Permissão | Justificativa (colar) |
 | --- | --- |
 | `storage` | `Stores only the user's display preference: which controls the overlay shows and which corner of the video it sits in. Nothing else is stored, and nothing leaves the device.` |
-| `activeTab` | `The keyboard shortcuts need to identify the active tab in order to apply the speed change to the video the user is currently watching.` |
 | Acesso a todos os sites (`host_permissions` / content script em `<all_urls>`) | `Videos exist on any website, and the extension's entire purpose is to control the video wherever it happens to be. The access is used only to inject the script that locates video elements and changes their playbackRate and volume properties, and to draw the overlaid control. The extension does not read page content, does not access cookies, history or form data, and sends nothing to any server — it makes no network requests at all.` |
 
 **Are you using remote code?** *No, I am not using remote code.* Todo o JavaScript vai dentro do pacote; a extensão não carrega script externo nem usa `eval`.

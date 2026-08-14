@@ -32,8 +32,9 @@ A extensão **não** lê o conteúdo das páginas, o histórico de navegação, 
 | Permissão | Motivo |
 | --- | --- |
 | `storage` | Guardar sua configuração (controles exibidos e canto do overlay) localmente. |
-| `activeTab` | Ao usar um atalho de teclado, identificar a aba ativa para aplicar a mudança nela. |
 | `host_permissions: <all_urls>` | Vídeos existem em qualquer site, e a extensão foi feita para funcionar em qualquer um deles. Esse acesso é usado só para inserir o script de controle descrito acima — nunca para ler ou enviar conteúdo das páginas. |
+
+São só essas duas: a extensão não pede acesso ao histórico, às abas nem a nada além do necessário.
 
 ## Terceiros
 
@@ -64,7 +65,7 @@ Stored locally on your device via `chrome.storage.local`: your preferences only 
 
 The content script locates `<video>`/`<audio>` elements and reads/writes only their `playbackRate` and `volume`, amplifying audio above 100% locally through the Web Audio API. It does not read page content, browsing history, cookies, or form data, and sends nothing anywhere.
 
-Permissions: `storage` (save preferences), `activeTab` (apply keyboard shortcuts to the current tab), `<all_urls>` (videos can be on any site — used solely to inject the control script).
+Permissions: `storage` (save preferences) and `<all_urls>` (videos can be on any site — used solely to inject the control script). Nothing else is requested.
 
 No third parties are involved. Data is not sold, is not used for any purpose unrelated to the extension's core function, and is not used for creditworthiness or lending.
 

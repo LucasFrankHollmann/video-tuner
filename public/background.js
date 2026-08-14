@@ -3,6 +3,8 @@
 const STEP = 0.25;
 
 chrome.commands.onCommand.addListener(async (command) => {
+  // Sem permissao "tabs"/"activeTab" o query nao devolve url/title, mas o id
+  // vem — e o sendMessage e autorizado pelo host_permissions <all_urls>.
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (!tab || !tab.id) return;
 
