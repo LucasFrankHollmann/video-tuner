@@ -5,7 +5,11 @@ Tudo o que o cadastro pede, já preenchido. Os textos que vão para a loja estã
 ## 1. Antes de começar
 
 - **[você]** Conta de desenvolvedor no [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) — taxa **única de US$ 5** por conta (não por extensão).
-- **[você]** GitHub Pages ligado para a política de privacidade: *Settings → Pages → Branch `main`, pasta `/docs`*. A URL fica `https://lucasfrankhollmann.github.io/video-tuner/`. Confirme que abre antes de enviar — a Store valida o link. A página tem um resumo em inglês no fim, que é o que o revisor vai ler.
+- URL da política de privacidade. Duas opções:
+  - **Já funciona, sem configurar nada:** `https://github.com/LucasFrankHollmann/video-tuner/blob/main/PRIVACY.md`
+  - **Página formatada:** ligar o GitHub Pages em *Settings → Pages → Branch `main`, pasta `/docs`* e usar `https://lucasfrankhollmann.github.io/video-tuner/`. Enquanto o Pages não estiver ligado essa URL dá **404**, e a Store valida o link. Dá para trocar esse campo depois, sem reenviar o pacote.
+
+  As duas têm o mesmo conteúdo, com resumo em inglês no fim — que é o que o revisor lê.
 
 ## 2. Gerar o pacote
 
@@ -112,7 +116,7 @@ Adjust the playback speed and volume of videos on the page the user is viewing, 
 - I do not use or transfer user data for purposes that are unrelated to my item's single purpose;
 - I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
-**Privacy policy URL:** `https://lucasfrankhollmann.github.io/video-tuner/`
+**Privacy policy URL:** `https://github.com/LucasFrankHollmann/video-tuner/blob/main/PRIVACY.md` — ou a do GitHub Pages, se você ligou (ver seção 1).
 
 ## 6. Distribuição
 
@@ -122,18 +126,24 @@ Adjust the playback speed and volume of videos on the page the user is viewing, 
 
 ## 7. Notes for the reviewer (campo opcional, ajuda)
 
+O dashboard avisa que `<all_urls>` leva a **revisão detalhada** e sugere `activeTab`. A troca não serve aqui, e é isso que este texto explica — vale colar mesmo sendo campo opcional, porque é a única chance de responder ao ponto antes da fila.
+
 ```
 Open source: https://github.com/LucasFrankHollmann/video-tuner
 
 How to test: open any site with a video (youtube.com, for example) and hover the video. A badge appears in the corner; hover it and the panel expands with the speed and volume controls. The extension icon opens the settings screen.
 
-Broad site access is required because the extension has to locate the video element on any page. It only reads and writes playbackRate and volume on those elements and draws its overlay inside a Shadow DOM. There are no network requests, no remote code, no analytics, and no data collection.
+Why broad host access is required, and why activeTab cannot replace it: the overlay must appear on hover, with no prior click, on whichever page the user is already watching a video on. activeTab is granted only after an explicit gesture on the extension icon, which would mean clicking the icon on every tab and after every navigation before any control shows up. A fixed list of sites is equally unworkable, since videos appear on arbitrary sites — that is the entire point of the extension.
+
+What the access is actually used for: locating video and audio elements (including inside Shadow DOM) and reading/writing only their playbackRate and volume, plus drawing the overlay inside a Shadow DOM. The extension does not read page content, cookies, history or form data. There are no network requests, no remote code, no analytics, and no data collection.
 
 Note: the extension's user interface is in Brazilian Portuguese.
 ```
 
 ## 8. Depois de enviar
 
-A revisão costuma levar de algumas horas a alguns dias; extensões que pedem acesso a todos os sites tendem a ficar no lado mais longo.
+**Espere demora.** Por causa do `<all_urls>` o dashboard marca a extensão para revisão detalhada — é aviso de fila mais longa, não de reprovação. Pode levar de dias a algumas semanas na primeira publicação.
+
+Se algum dia quiser sair dessa fila, o caminho é pedir só `activeTab` + `scripting` na instalação e oferecer o acesso a todos os sites como **permissão opcional**, concedida pelo usuário na tela de configuração (`optional_host_permissions` + `chrome.permissions.request` + `chrome.scripting.registerContentScripts`). Custa uma refatoração e muda a experiência de quem não concede.
 
 Para publicar uma atualização: suba a `version` em `public/manifest.json`, rode `npm run build` e o `scripts/zip.ps1`, e envie o novo zip no mesmo item da Store. Toda versão passa por nova revisão.
